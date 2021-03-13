@@ -6,15 +6,23 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
+    "@harlem/core": "^1.1.1",
+    "@vuelidate/core": "^2.0.0-alpha.14",
+    "@vuelidate/validators": "^2.0.0-alpha.12",
     "core-js": "^3.6.5",
+    "date-fns": "^2.19.0",
+    "marked": "^2.0.1",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
+    "vue-i18n": "^9.0.0-rc.7",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-loader": "^2.0.0-rc.1",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
@@ -37,6 +45,7 @@
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
+    "vue-cli-plugin-i18n": "~2.0.1",
     "vue-jest": "^5.0.0-0"
   },
   "gitHooks": {
