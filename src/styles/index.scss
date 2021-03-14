@@ -1,0 +1,38 @@
+:root{
+    --primary-color:#3B49DF;
+    --bg-body-color:#D2D6DB;
+    --bg-card-color:#FFFFFF;
+    --bg-card-color-10:#F9FAFA;
+    --border-color:#B5BDC4;
+    --bg-button-color:var(--primary-color);
+    --bg-button-color-neutral:#D2D6DB;
+    --text-button-color:#FFFFFF;
+    --text-base-color:#08090A;
+    --text-primary-color:var(--primary-color);
+    --text-base-color-10:#7D8A97;
+    --text-base-color-20:#64707D;
+    --text-base-color-30:#4D5760;
+    --reaction-heart-color:#DC1818;
+    --reaction-unicorn-color:#61DAF6;
+    --reaction-saved-color:#3B49DF;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+input,button, textarea {
+    outline: none;
+}
