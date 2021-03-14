@@ -1,9 +1,11 @@
 :root{
     --primary-color:#3B49DF;
-    --bg-body-color:#D2D6DB;
+    --primary-color-alpha-10:#4b59f31f;
+    --bg-body-color:#EEF0F1;
     --bg-card-color:#FFFFFF;
     --bg-card-color-10:#F9FAFA;
-    --border-color:#B5BDC4;
+    --border-color:#D2D6DB;
+    --border-color-10:#ebebeb;
     --bg-button-color:var(--primary-color);
     --bg-button-color-neutral:#D2D6DB;
     --text-button-color:#FFFFFF;
@@ -14,7 +16,8 @@
     --text-base-color-30:#4D5760;
     --reaction-heart-color:#DC1818;
     --reaction-unicorn-color:#61DAF6;
-    --reaction-saved-color:#3B49DF;
+    --reaction-saved-color:#3b49df28;
+    --layout-header-height:60px;
 }
 
 
@@ -35,4 +38,13 @@ a {
   
 input,button, textarea {
     outline: none;
+    border: none;
+}
+
+html,body {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: var(--bg-body-color);
 }
