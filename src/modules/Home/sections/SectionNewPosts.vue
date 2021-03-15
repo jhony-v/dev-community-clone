@@ -5,20 +5,19 @@
         Posts
       </h1>
       <div class="posts__nav">
-        <tab-provider initialId="feed">
-          <tab-item id="feed">Feed</tab-item>
-          <tab-item id="week">Week</tab-item>
-          <tab-item id="month">Month</tab-item>
-          <tab-item id="year">Year</tab-item>
-          <tab-item id="infinity">Infinity</tab-item>
-          <tab-item id="latest">Latest</tab-item>
+        <tab-provider initialId="feeds">
+          <tab-item v-for="(item, key) in getFilters" :key="key" :id="item.id"
+            >{{ item.name }}
+          </tab-item>
         </tab-provider>
       </div>
     </div>
     <div class="posts__list">
-      <post-card></post-card>
-      <post-card></post-card>
-      <post-card></post-card>
+      <post-card
+        v-for="(item, key) in getPosts"
+        :key="key"
+        :post="item"
+      ></post-card>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@ import { createStore } from "@harlem/core";
 
 export interface IPostsStore {
   posts: Partial<Post>[];
-  filters: Partial<FilterPost>[];
+  filters: FilterPost[];
   currentFilter: FilterPost;
 }
 
@@ -31,7 +31,7 @@ export const getFilters = postsStore.getter(
 
 export const onFilterPosts = postsStore.mutation("onFilterPosts", state => {
   new Promise(f => setTimeout(f, 2000)).then(() => {
-    state.filters = state.posts.filter(e => e.id === state.currentFilter.name);
+    state.posts = state.posts.filter(e => e.id === state.currentFilter.name);
   });
 });
 

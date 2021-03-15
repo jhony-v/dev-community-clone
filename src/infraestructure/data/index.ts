@@ -54,7 +54,7 @@ export const postsData: Partial<Post>[] = [
   }
 ];
 
-export const filterPostsData: Partial<FilterPost>[] = [
+export const filterPostsData: FilterPost[] = [
   {
     id: "feeds",
     name: "Feed"
