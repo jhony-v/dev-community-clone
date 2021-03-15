@@ -2,18 +2,38 @@
   <aside class="sidebar-layout">
     <div class="sidebar__navigation">
       <router-link
-        v-for="(e, i) in [
-          'Home',
-          'Reading List',
-          'Listing',
-          'Podcasts',
-          'Videos',
-          'Tags'
+        v-for="([text, image], i) in [
+          [
+            'Home',
+            'https://www.flaticon.com/svg/vstatic/svg/3074/3074767.svg?token=exp=1615815613~hmac=343e89cec13c672a2c201aa459eac87c'
+          ],
+          [
+            'Reading List',
+            'https://www.flaticon.com/svg/vstatic/svg/167/167755.svg?token=exp=1615815392~hmac=b4906fdf542ed3341656d05bb94a5a1b'
+          ],
+          [
+            'Listing',
+            'https://www.flaticon.com/svg/vstatic/svg/3601/3601157.svg?token=exp=1615815682~hmac=25f58708fa70f09d509e09af9b111204'
+          ],
+          [
+            'Podcasts',
+            'https://www.flaticon.com/svg/vstatic/svg/4349/4349811.svg?token=exp=1615815592~hmac=e131b0061840d4142f50789af4cf246d'
+          ],
+          [
+            'Videos',
+            'https://www.flaticon.com/svg/vstatic/svg/3074/3074767.svg?token=exp=1615815613~hmac=343e89cec13c672a2c201aa459eac87c'
+          ],
+          [
+            'Tags',
+            'https://www.flaticon.com/svg/vstatic/svg/891/891586.svg?token=exp=1615815709~hmac=98f3170daa802c5270cf4fcb1e374282'
+          ]
         ]"
         to="/"
         :key="i"
         class="navigation__item"
-        >{{ e }}</router-link
+        ><img :src="image" class="navigation__item__image" />{{
+          text
+        }}</router-link
       >
     </div>
     <div class="sidebar__tags">
@@ -62,6 +82,12 @@ export default defineComponent({
       margin-bottom: 20px;
       color: var(--text-base-color);
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      &__image {
+        margin-right: 10px;
+        width: 20px;
+      }
     }
   }
   &__tags {
