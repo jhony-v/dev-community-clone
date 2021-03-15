@@ -19,7 +19,7 @@ export interface Post {
   id: string;
   backgroundImage: string;
   title: string;
-  tags: { name: string; link: string }[];
+  tags: Tag[];
   datePublished: string;
   reactions: {
     totalHearts: number;

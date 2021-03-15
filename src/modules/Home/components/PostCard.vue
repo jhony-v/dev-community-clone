@@ -1,40 +1,43 @@
 <template>
   <base-card border class="post">
-    <div class="post__background">
-      <img
-        src="https://cdn.pixabay.com/photo/2021/02/08/20/24/lake-5996427__340.jpg"
-      />
+    <div class="post__background" v-if="post.backgroundImage">
+      <img :src="post.backgroundImage" />
     </div>
     <div class="post__detail">
       <div class="post__user">
-        <image-avatar
-          src="https://cdn.pixabay.com/photo/2020/11/26/15/28/woman-5779323__340.jpg"
-          size="30px"
-        ></image-avatar>
+        <image-avatar :src="post.user?.avatar" size="30px"></image-avatar>
         <div class="post__user__detail">
-          <p class="post__detail__username">Leonardo Smith</p>
-          <time class="post__detail__date">Mar 14 (17 hours ago)</time>
+          <p class="post__detail__username">{{ post.user?.fullName }}</p>
+          <time class="post__detail__date">{{ post.datePublished }}</time>
         </div>
       </div>
       <div class="post__content">
         <h3 class="post__content__title">
-          RoadMap to learn MERN Stack for Beginners
+          {{ post.title }}
         </h3>
         <div class="post__content__tags">
-          <hashtag-link>javascript</hashtag-link>
-          <hashtag-link>node</hashtag-link>
-          <hashtag-link>react</hashtag-link>
+          <hashtag-link
+            v-for="(item, key) in post.tags || []"
+            :key="key"
+            :to="item.id"
+          >
+            {{ item.name }}
+          </hashtag-link>
         </div>
         <div class="post__content__options">
           <div class="post__actions">
             <base-card hover class="post__actions__item"
-              >15 reactions</base-card
+              >{{ post.reactions?.totalHearts }} reactions</base-card
             >
-            <base-card hover class="post__actions__item">6 comments</base-card>
+            <base-card hover class="post__actions__item"
+              >{{ post.reactions?.totalComments }} comments</base-card
+            >
           </div>
           <div>
             <span class="small-text">2 min read</span>
-            <base-button variant="neutral">Save</base-button>
+            <base-button variant="neutral" @click="$emit('onSave', post.id)">{{
+              post.saved ? "Saved" : "Save"
+            }}</base-button>
           </div>
         </div>
       </div>
@@ -47,9 +50,17 @@ import BaseButton from "@/components/BaseButton.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import HashtagLink from "@/components/HashtagLink.vue";
 import ImageAvatar from "@/components/ImageAvatar.vue";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import { Post } from "@/infraestructure/entities";
 
 export default defineComponent({
+  props: {
+    post: {
+      type: Object as PropType<Partial<Post>>,
+      default: {}
+    }
+  },
+  emits: ["onSave"],
   components: { BaseCard, ImageAvatar, HashtagLink, BaseButton }
 });
 </script>
@@ -111,6 +122,10 @@ export default defineComponent({
     &__title {
       font-size: 1.6em;
       margin: 10px 0;
+      &:hover {
+        color: var(--text-primary);
+        cursor: pointer;
+      }
     }
     &__tags {
       * {
