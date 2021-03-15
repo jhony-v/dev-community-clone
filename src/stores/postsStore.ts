@@ -21,6 +21,12 @@ const postsStore = createStore("postsStore", postsInitialState);
 
 /* -------------------------------- getterns -------------------------------- */
 
+export const getPosts = postsStore.getter("getPosts", state => state.posts);
+export const getFilters = postsStore.getter(
+  "getFilters",
+  state => state.filters
+);
+
 /* --------------------------------- actions -------------------------------- */
 
 export const onFilterPosts = postsStore.mutation("onFilterPosts", state => {

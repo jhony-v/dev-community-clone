@@ -27,9 +27,16 @@
 import { TabProvider, TabItem } from "@/components/Tabs";
 import { defineComponent } from "vue";
 import PostCard from "../components/PostCard.vue";
+import { getPosts, getFilters } from "@/stores/postsStore";
 
 export default defineComponent({
-  components: { TabProvider, TabItem, PostCard }
+  components: { TabProvider, TabItem, PostCard },
+  setup() {
+    return {
+      getPosts,
+      getFilters
+    };
+  }
 });
 </script>
 
