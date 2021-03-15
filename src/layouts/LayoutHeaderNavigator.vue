@@ -7,7 +7,9 @@
       <input class="header__engine__input" placeholder="Search..." />
     </div>
     <div class="header__user-options">
-      <base-button weight size="medium">Write a post</base-button>
+      <base-button weight size="medium" @click="$router.push('/new')">
+        Write a post
+      </base-button>
       <image-avatar
         src="https://cdn.pixabay.com/photo/2021/02/08/20/24/lake-5996427__340.jpg"
       ></image-avatar>
@@ -16,10 +18,10 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import BaseButton from "@/components/BaseButton.vue";
 import DevToLogo from "@/components/DevToLogo.vue";
 import ImageAvatar from "@/components/ImageAvatar.vue";
-import { defineComponent } from "vue";
 
 export default defineComponent({
   components: { DevToLogo, BaseButton, ImageAvatar }
