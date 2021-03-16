@@ -44,5 +44,13 @@ export default defineComponent({
   &__border {
     border: 1px solid var(--border-color);
   }
+  &__inherit {
+    background: none;
+    &.card__hover {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
 }
 </style>

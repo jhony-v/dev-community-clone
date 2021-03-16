@@ -30,18 +30,16 @@
         ]"
         to="/"
         :key="i"
-        class="navigation__item"
-        ><img :src="image" class="navigation__item__image" />{{
-          text
-        }}</router-link
       >
+        <base-card variant="inherit" hover class="navigation__item">
+          <img :src="image" class="navigation__item__image" />{{ text }}
+        </base-card>
+      </router-link>
     </div>
     <div class="sidebar__tags">
-      <base-text weight>My tags</base-text>
+      <base-text weight class="sidebar__tags__title">My tags</base-text>
       <div class="sidebar__tags__list">
-        <hashtag-link
-          dark
-          class="tag__item"
+        <base-card
           v-for="(e, i) in [
             'Java',
             'React',
@@ -54,20 +52,27 @@
             'css',
             'php'
           ]"
+          variant="inherit"
+          hover
+          class="tag__item"
           :key="i"
-          >{{ e }}</hashtag-link
         >
+          <hashtag-link dark>
+            {{ e }}
+          </hashtag-link>
+        </base-card>
       </div>
     </div>
   </aside>
 </template>
 <script lang="ts">
+import BaseCard from "@/components/BaseCard.vue";
 import BaseText from "@/components/BaseText.vue";
 import HashtagLink from "@/components/HashtagLink.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { BaseText, HashtagLink }
+  components: { BaseText, HashtagLink, BaseCard }
 });
 </script>
 
@@ -79,10 +84,11 @@ export default defineComponent({
     flex-direction: column;
     margin-bottom: 20px;
     .navigation__item {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       color: var(--text-base-color);
       font-size: 0.9rem;
       display: flex;
+      padding: 8px;
       align-items: center;
       &__image {
         margin-right: 10px;
@@ -91,6 +97,9 @@ export default defineComponent({
     }
   }
   &__tags {
+    &__title {
+      padding-left: 6px;
+    }
     &__list {
       display: flex;
       margin-top: 20px;
@@ -98,7 +107,8 @@ export default defineComponent({
       height: 300px;
       overflow-y: auto;
       .tag__item {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        padding: 8px;
       }
     }
   }

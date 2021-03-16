@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .hashtag__link {
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: var(--text-base-color-10);
   &.dark {
     color: var(--text-base-color);

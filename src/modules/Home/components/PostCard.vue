@@ -19,7 +19,7 @@
           <hashtag-link
             v-for="(item, key) in post.tags || []"
             :key="key"
-            :to="item.id"
+            :to="item.name"
           >
             {{ item.name }}
           </hashtag-link>
@@ -120,7 +120,7 @@ export default defineComponent({
   &__content {
     margin-left: 40px;
     &__title {
-      font-size: 1.6em;
+      font-size: 1.5em;
       margin: 10px 0;
       &:hover {
         color: var(--text-primary);
