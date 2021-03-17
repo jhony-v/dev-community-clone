@@ -47,6 +47,7 @@ import { TabItem, TabProvider } from "@/components/Tabs";
 import { defineComponent, ref } from "vue";
 import FormEditable from "./sections/FormEditable.vue";
 import PreviewResult from "./sections/PreviewResult.vue";
+import { getInitialState } from "@/stores/writeNewPostStore";
 
 export default defineComponent({
   components: {
@@ -65,7 +66,7 @@ export default defineComponent({
     const onTabSelected = (tabId: string) => {
       tabSelected.value = tabId;
     };
-
+    getInitialState();
     return {
       tabSelected,
       onTabSelected

@@ -4,18 +4,32 @@
       Add a cover image
     </button>
   </div>
-  <input class="write__title" placeholder="New post title here..." />
+  <input
+    class="write__title"
+    placeholder="New post title here..."
+    :value="writeNewPostStore.state.title"
+    @keyup="onWrite.onTitle($event.target.value)"
+  />
   <input class="write__tags" placeholder="Add up to 4 tags..." />
-  <textarea class="write__content" rows="20"></textarea>
+  <textarea
+    class="write__content"
+    rows="20"
+    :value="writeNewPostStore.state.content"
+    @keyup="onWrite.onContent($event.target.value)"
+  ></textarea>
 </template>
 
 <script lang="ts">
+import { onWrite, writeNewPostStore } from "@/stores/writeNewPostStore";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {},
   setup() {
-    return {};
+    return {
+      onWrite,
+      writeNewPostStore
+    };
   }
 });
 </script>
