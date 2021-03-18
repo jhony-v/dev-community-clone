@@ -78,11 +78,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .new {
   display: flex;
-  width: 80%;
+  width: 92%;
   margin: 10px auto;
 }
 .form {
-  width: 70%;
+  width: 72%;
   flex: none;
   &__header {
     display: flex;

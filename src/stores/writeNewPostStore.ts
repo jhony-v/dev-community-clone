@@ -1,6 +1,6 @@
 import { Tag } from "@/infraestructure/entities";
 import storageObject from "@/utils/storageObject";
-import { createStore, EVENTS } from "@harlem/core";
+import { createStore } from "@harlem/core";
 import marked from "marked";
 
 export interface IWriteNewPostStore {
@@ -24,9 +24,16 @@ export const writeNewPostStore = createStore(
 
 /* --------------------------------- getters -------------------------------- */
 
-export const getContent = writeNewPostStore.getter("getContent", state => {
-  return marked(state.content);
-});
+export const getContent = writeNewPostStore.getter("getContent", state =>
+  marked(state.content)
+);
+
+export const isValidBackgroundImage = writeNewPostStore.getter(
+  "isValidBackgroundImage",
+  state =>
+    state.backgroundImage.trim().length !== 0 &&
+    /(jpg|png|jpeg|gif)/.test(state.backgroundImage)
+);
 
 /* --------------------------------- actions -------------------------------- */
 
@@ -45,9 +52,18 @@ export const onWrite = (() => {
       state.content = payload;
     }
   );
+  const onBackgroundImage = writeNewPostStore.mutation<string>(
+    "onBackgroundImage",
+    (state, payload) => {
+      storageObject("new-post", { backgroundImage: payload });
+      state.backgroundImage = payload;
+    }
+  );
+
   return {
     onTitle,
-    onContent
+    onContent,
+    onBackgroundImage
   };
 })();
 
@@ -59,5 +75,6 @@ export const getInitialState = () => {
     const parseNewPost = JSON.parse(newPostStorage);
     onWrite.onTitle(parseNewPost.title);
     onWrite.onContent(parseNewPost.content);
+    onWrite.onBackgroundImage(parseNewPost.backgroundImage);
   }
 };

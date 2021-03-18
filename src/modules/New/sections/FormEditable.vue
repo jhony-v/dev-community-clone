@@ -1,8 +1,44 @@
 <template>
-  <div class="write__insert-link--wrapper">
-    <button class="write__insert-link--button">
-      Add a cover image
-    </button>
+  <div class="write write__insert-link--wrapper">
+    <template v-if="isValidBackgroundImage">
+      <div class="image__preview">
+        <img :src="writeNewPostStore.state.backgroundImage" />
+        <div class="image__preview__options">
+          <base-button
+            variant="neutral"
+            size="medium"
+            class="change-image"
+            @click="onChangeImage"
+          >
+            Change
+          </base-button>
+          <base-button size="medium" class="remove-image" @click="onRemoveImage"
+            >Remove</base-button
+          >
+        </div>
+      </div>
+    </template>
+    <template v-else>
+      <div class="image__input__wrapper" v-if="toggleAddImageStatus">
+        <input
+          class="image__input__url"
+          type="url"
+          placeholder="Type a image url..."
+          @keyup="onWrite.onBackgroundImage($event.target.value)"
+        />
+        <div
+          class="image__input__button"
+          role="button"
+          tabindex="0"
+          @click="hideInputToAddImage"
+        >
+          Cancel
+        </div>
+      </div>
+      <button class="image__add-button" @click="showInputToAddImage" v-else>
+        Add a cover image
+      </button></template
+    >
   </div>
   <input
     class="write__title"
@@ -20,15 +56,39 @@
 </template>
 
 <script lang="ts">
-import { onWrite, writeNewPostStore } from "@/stores/writeNewPostStore";
-import { defineComponent } from "vue";
+import BaseButton from "@/components/BaseButton.vue";
+import {
+  onWrite,
+  writeNewPostStore,
+  isValidBackgroundImage
+} from "@/stores/writeNewPostStore";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  components: {},
+  components: { BaseButton },
   setup() {
+    const toggleAddImageStatus = ref(false);
+    const showInputToAddImage = () => (toggleAddImageStatus.value = true);
+    const hideInputToAddImage = () => (toggleAddImageStatus.value = false);
+
+    const onChangeImage = () => {
+      onWrite.onBackgroundImage("");
+      showInputToAddImage();
+    };
+    const onRemoveImage = () => {
+      onWrite.onBackgroundImage("");
+      hideInputToAddImage();
+    };
+
     return {
+      isValidBackgroundImage,
       onWrite,
-      writeNewPostStore
+      writeNewPostStore,
+      toggleAddImageStatus,
+      showInputToAddImage,
+      hideInputToAddImage,
+      onChangeImage,
+      onRemoveImage
     };
   }
 });
@@ -36,8 +96,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .write {
-  &__insert-link {
-    &--button {
+  .image {
+    &__add-button,
+    &__input__wrapper {
       margin-bottom: 20px;
       border: 1px solid var(--border-color);
       border-radius: 6px;
@@ -48,7 +109,45 @@ export default defineComponent({
       color: var(--text-base-color-30);
       display: inline-block;
     }
+    &__input {
+      &__wrapper {
+        width: 100%;
+        display: flex;
+      }
+      &__url {
+        flex: 1;
+      }
+      &__button {
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    &__preview {
+      display: flex;
+      img {
+        width: 220px;
+        height: 100px;
+        border-radius: 5px;
+      }
+      &__options {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+      }
+      & .change-image {
+        font-weight: bold;
+        border: 2px solid var(--text-base-color-10);
+        background: none;
+        margin-right: 20px;
+      }
+      & .remove-image {
+        font-weight: bold;
+        color: var(--text-danger-color);
+        background: none;
+      }
+    }
   }
+
   &__title {
     display: block;
     color: var(--text-base-color);
