@@ -122,8 +122,5 @@ export default defineComponent({
 .new__area {
   height: 520px;
   overflow-y: auto;
-  padding: 30px 50px;
-  display: flex;
-  flex-direction: column;
 }
 </style>

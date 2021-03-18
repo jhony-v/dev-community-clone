@@ -14,7 +14,7 @@ export default defineComponent({});
 .large__title {
   display: block;
   color: var(--text-base-color);
-  font-size: 2.5em;
+  font-size: 2.6em;
   font-weight: 900;
 }
 </style>

@@ -1,58 +1,64 @@
 <template>
-  <div class="write write__insert-link--wrapper">
-    <template v-if="isValidBackgroundImage">
-      <div class="image__preview">
-        <img :src="writeNewPostStore.state.backgroundImage" />
-        <div class="image__preview__options">
-          <base-button
-            variant="neutral"
-            size="medium"
-            class="change-image"
-            @click="onChangeImage"
-          >
-            Change
-          </base-button>
-          <base-button size="medium" class="remove-image" @click="onRemoveImage"
-            >Remove</base-button
-          >
+  <div class="write">
+    <div class="write__insert-link--wrapper">
+      <template v-if="isValidBackgroundImage">
+        <div class="image__preview">
+          <img :src="writeNewPostStore.state.backgroundImage" />
+          <div class="image__preview__options">
+            <base-button
+              variant="neutral"
+              size="medium"
+              class="change-image"
+              @click="onChangeImage"
+            >
+              Change
+            </base-button>
+            <base-button
+              size="medium"
+              class="remove-image"
+              @click="onRemoveImage"
+              >Remove</base-button
+            >
+          </div>
         </div>
-      </div>
-    </template>
-    <template v-else>
-      <div class="image__input__wrapper" v-if="toggleAddImageStatus">
-        <input
-          class="image__input__url"
-          type="url"
-          placeholder="Type a image url..."
-          @keyup="onWrite.onBackgroundImage($event.target.value)"
-        />
-        <div
-          class="image__input__button"
-          role="button"
-          tabindex="0"
-          @click="hideInputToAddImage"
-        >
-          Cancel
+      </template>
+      <template v-else>
+        <div class="image__input__wrapper" v-if="toggleAddImageStatus">
+          <input
+            class="image__input__url"
+            type="url"
+            placeholder="Type a image url..."
+            @keyup="onWrite.onBackgroundImage($event.target.value)"
+          />
+          <div
+            class="image__input__button"
+            role="button"
+            tabindex="0"
+            @click="hideInputToAddImage"
+          >
+            Cancel
+          </div>
         </div>
-      </div>
-      <button class="image__add-button" @click="showInputToAddImage" v-else>
-        Add a cover image
-      </button></template
-    >
+        <button class="image__add-button" @click="showInputToAddImage" v-else>
+          Add a cover image
+        </button></template
+      >
+    </div>
+    <input
+      class="write__title"
+      placeholder="New post title here..."
+      :value="writeNewPostStore.state.title"
+      @keyup="onWrite.onTitle($event.target.value)"
+    />
+    <input class="write__tags" placeholder="Add up to 4 tags..." />
+    <textarea
+      class="write__content"
+      rows="6"
+      placeholder="Write your post content here..."
+      :value="writeNewPostStore.state.content"
+      @keyup="onWrite.onContent($event.target.value)"
+    ></textarea>
   </div>
-  <input
-    class="write__title"
-    placeholder="New post title here..."
-    :value="writeNewPostStore.state.title"
-    @keyup="onWrite.onTitle($event.target.value)"
-  />
-  <input class="write__tags" placeholder="Add up to 4 tags..." />
-  <textarea
-    class="write__content"
-    rows="20"
-    :value="writeNewPostStore.state.content"
-    @keyup="onWrite.onContent($event.target.value)"
-  ></textarea>
 </template>
 
 <script lang="ts">
@@ -96,6 +102,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .write {
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
   .image {
     &__add-button,
     &__input__wrapper {
@@ -124,6 +133,7 @@ export default defineComponent({
     }
     &__preview {
       display: flex;
+      margin-bottom: 30px;
       img {
         width: 220px;
         height: 100px;
@@ -151,7 +161,7 @@ export default defineComponent({
   &__title {
     display: block;
     color: var(--text-base-color);
-    font-size: 2.5em;
+    font-size: 2.6em;
     font-weight: 900;
     &::placeholder {
       color: var(--text-base-color-20);
@@ -166,7 +176,7 @@ export default defineComponent({
   &__content {
     resize: none;
     width: 100%;
-    font-size: 14px;
+    font-size: 18px;
     font-family: monospace;
     display: block;
     margin-top: 30px;
