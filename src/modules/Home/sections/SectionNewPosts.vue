@@ -2,7 +2,7 @@
   <div class="posts">
     <div class="posts__header">
       <h1 class="posts__title">
-        Posts
+        {{ t("posts.title") }}
       </h1>
       <div class="posts__nav">
         <tab-provider initialId="feeds">
@@ -27,13 +27,17 @@ import { TabProvider, TabItem } from "@/components/Tabs";
 import { defineComponent } from "vue";
 import PostCard from "../components/PostCard.vue";
 import { getPosts, getFilters } from "@/stores/postsStore";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: { TabProvider, TabItem, PostCard },
   setup() {
+    const { t } = useI18n();
+
     return {
       getPosts,
-      getFilters
+      getFilters,
+      t
     };
   }
 });

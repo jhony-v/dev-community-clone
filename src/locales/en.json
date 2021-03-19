@@ -1,7 +1,7 @@
 {
   "header": {
     "search-engine": "Search...",
-    "button-write-post": "Write post"
+    "write-post": "Write post"
   },
   "sidebar": {
     "my-tags": "My tags"
@@ -47,6 +47,10 @@
       "tags": "Add up to 4 tags...",
       "content": "Write your post content here...",
       "save-draft": "Save draft"
+    },
+    "editor" : {
+      "title" : "Editor Basics",
+      "message" : "Use Markdown to write and format posts. Commonly used syntax You can use Liquid tags to add rich content such as Tweets, YouTube videos, etc. In addition to images for the post's content, you can also drag and drop a cover image"
     }
   }
 }

@@ -11,13 +11,13 @@
               class="change-image"
               @click="onChangeImage"
             >
-              Change
+              {{ t("actions.change") }}
             </base-button>
             <base-button
               size="medium"
               class="remove-image"
               @click="onRemoveImage"
-              >Remove</base-button
+              >{{ t("actions.remove") }}</base-button
             >
           </div>
         </div>
@@ -27,7 +27,7 @@
           <input
             class="image__input__url"
             type="url"
-            placeholder="Type a image url..."
+            :placeholder="t('new-post.form.add-image.message-url')"
             @keyup="onWrite.onBackgroundImage($event.target.value)"
           />
           <div
@@ -36,25 +36,25 @@
             tabindex="0"
             @click="hideInputToAddImage"
           >
-            Cancel
+            {{ t("actions.cancel") }}
           </div>
         </div>
         <button class="image__add-button" @click="showInputToAddImage" v-else>
-          Add a cover image
+          {{ t("new-post.form.add-image.cover") }}
         </button></template
       >
     </div>
     <input
       class="write__title"
-      placeholder="New post title here..."
+      :placeholder="'new-post.form.title'"
       :value="writeNewPostStore.state.title"
       @keyup="onWrite.onTitle($event.target.value)"
     />
-    <input class="write__tags" placeholder="Add up to 4 tags..." />
+    <input class="write__tags" :placeholder="t('new-post.form.tags')" />
     <textarea
       class="write__content"
       rows="6"
-      placeholder="Write your post content here..."
+      :placeholder="t('new-post.form.content')"
       :value="writeNewPostStore.state.content"
       @keyup="onWrite.onContent($event.target.value)"
     ></textarea>
@@ -68,11 +68,13 @@ import {
   writeNewPostStore,
   isValidBackgroundImage
 } from "@/stores/writeNewPostStore";
+import { useI18n } from "vue-i18n";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   components: { BaseButton },
   setup() {
+    const { t } = useI18n();
     const toggleAddImageStatus = ref(false);
     const showInputToAddImage = () => (toggleAddImageStatus.value = true);
     const hideInputToAddImage = () => (toggleAddImageStatus.value = false);
@@ -94,7 +96,8 @@ export default defineComponent({
       showInputToAddImage,
       hideInputToAddImage,
       onChangeImage,
-      onRemoveImage
+      onRemoveImage,
+      t
     };
   }
 });

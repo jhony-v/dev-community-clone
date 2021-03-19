@@ -37,7 +37,9 @@
       </router-link>
     </div>
     <div class="sidebar__tags">
-      <base-text weight class="sidebar__tags__title">My tags</base-text>
+      <base-text weight class="sidebar__tags__title">{{
+        t("sidebar.my-tags")
+      }}</base-text>
       <div class="sidebar__tags__list">
         <base-card
           v-for="(e, i) in [
@@ -70,9 +72,17 @@ import BaseCard from "@/components/BaseCard.vue";
 import BaseText from "@/components/BaseText.vue";
 import HashtagLink from "@/components/HashtagLink.vue";
 import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
-  components: { BaseText, HashtagLink, BaseCard }
+  components: { BaseText, HashtagLink, BaseCard },
+  setup() {
+    const { t } = useI18n();
+
+    return {
+      t
+    };
+  }
 });
 </script>
 

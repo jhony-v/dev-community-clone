@@ -3,11 +3,11 @@
     <section action="form" class="form">
       <div class="form__header">
         <dev-to-logo class="form__logo"></dev-to-logo>
-        <base-text weight>Write a new post</base-text>
+        <base-text weight>{{ t("new-post.title") }}</base-text>
         <div class="form__tabs">
           <tab-provider initialId="edit" @onTabSelected="onTabSelected">
-            <tab-item id="edit">Edit</tab-item>
-            <tab-item id="preview">preview</tab-item>
+            <tab-item id="edit">{{ t("actions.edit") }}</tab-item>
+            <tab-item id="preview">{{ t("actions.preview") }}</tab-item>
           </tab-provider>
         </div>
       </div>
@@ -19,21 +19,18 @@
           </keep-alive>
         </base-card>
         <div class="form__options">
-          <base-button weight size="medium">Publish</base-button>
-          <base-button weight size="medium" variant="neutral"
-            >Save draft</base-button
-          >
+          <base-button weight size="medium">{{
+            t("actions.publish")
+          }}</base-button>
+          <base-button weight size="medium" variant="neutral">{{
+            t("new-post.form.save-draft")
+          }}</base-button>
         </div>
       </div>
     </section>
     <div class="message">
-      <base-text weight>Editor Basics</base-text>
-      <div class="message__detail">
-        Use Markdown to write and format posts. Commonly used syntax You can use
-        Liquid tags to add rich content such as Tweets, YouTube videos, etc. In
-        addition to images for the post's content, you can also drag and drop a
-        cover image
-      </div>
+      <base-text weight>{{ t("new-post.editor.title") }}</base-text>
+      <div class="message__detail">{{ t("new-post.editor.message") }}</div>
     </div>
   </div>
 </template>
@@ -48,6 +45,7 @@ import { defineComponent, ref } from "vue";
 import FormEditable from "./sections/FormEditable.vue";
 import PreviewResult from "./sections/PreviewResult.vue";
 import { getInitialState } from "@/stores/writeNewPostStore";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: {
@@ -61,6 +59,8 @@ export default defineComponent({
     PreviewResult
   },
   setup() {
+    const { t } = useI18n();
+
     const tabSelected = ref("edit");
 
     const onTabSelected = (tabId: string) => {
@@ -69,7 +69,8 @@ export default defineComponent({
     getInitialState();
     return {
       tabSelected,
-      onTabSelected
+      onTabSelected,
+      t
     };
   }
 });

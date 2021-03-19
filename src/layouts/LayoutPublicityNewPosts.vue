@@ -7,7 +7,9 @@
     <div class="publicity__detail">
       <div class="publicity__detail__list">
         <base-card variant="neutral" class="publicity__item">
-          <base-text weight class="publicity__title">Stories (122)</base-text>
+          <base-text weight class="publicity__title"
+            >{{ t("publicity.home.stories.title") }} (122)</base-text
+          >
         </base-card>
         <base-card variant="neutral" hover class="publicity__item">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste modi
@@ -23,10 +25,12 @@
         </base-card>
       </div>
       <div class="publicity__options">
-        <base-button block size="medium">Share Your Story</base-button>
-        <base-button block size="medium" variant="neutral"
-          >See all posts</base-button
-        >
+        <base-button block size="medium">{{
+          t("publicity.home.stories.share-story")
+        }}</base-button>
+        <base-button block size="medium" variant="neutral">{{
+          t("publicity.home.stories.see-posts")
+        }}</base-button>
       </div>
     </div>
   </base-card>
@@ -35,10 +39,17 @@
 import BaseButton from "@/components/BaseButton.vue";
 import BaseCard from "@/components/BaseCard.vue";
 import BaseText from "@/components/BaseText.vue";
+import { useI18n } from "vue-i18n";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { BaseCard, BaseButton, BaseText }
+  components: { BaseCard, BaseButton, BaseText },
+  setup() {
+    const { t } = useI18n();
+    return {
+      t
+    };
+  }
 });
 </script>
 

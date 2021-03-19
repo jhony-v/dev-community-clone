@@ -1,7 +1,7 @@
 {
   "header": {
     "search-engine": "Buscar...",
-    "button-write-post": "Escribir publicación"
+    "write-post": "Escribir publicación"
   },
   "sidebar": {
     "my-tags": "My tags"
@@ -47,6 +47,10 @@
       "tags": "Añadir mas de 4 etiquetas...",
       "content": "Escribir tu contenido aquí...",
       "save-draft": "Guardar borrador"
+    },
+    "editor" : {
+      "title" : "Editor Basico",
+      "message" : "Usa Markdown para escribir y dar formato a las publicaciones. Sintaxis de uso común Puedes usar etiquetas Liquid para agregar contenido enriquecido como Tweets, videos de YouTube, etc. Además de imágenes para el contenido de la publicación, también puedes arrastrar y soltar una imagen de portada."
     }
   }
 }
