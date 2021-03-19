@@ -1,5 +1,5 @@
 <template>
-  <p>{{ t("hello") }}</p>
+  <p>{{ t("header.search-engine") }}</p>
 </template>
 
 <script lang="ts">

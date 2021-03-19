@@ -1,3 +1,52 @@
 {
-  "message": "hello i18n !!"
+  "header": {
+    "search-engine": "Search...",
+    "button-write-post": "Write post"
+  },
+  "sidebar": {
+    "my-tags": "My tags"
+  },
+  "posts": {
+    "filter": {
+      "feed": "feed",
+      "week": "week",
+      "month": "month",
+      "year": "year",
+      "infinity": "infinity",
+      "latest": "lates"
+    },
+    "title": "Posts"
+  },
+  "publicity": {
+    "home": {
+      "stories": {
+        "title": "Stories",
+        "share-story": "Share your story",
+        "see-posts": "See all posts"
+      }
+    }
+  },
+  "actions": {
+    "change": "Change",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "add": "Add",
+    "publish": "Publish",
+    "save": "Save",
+    "edit": "Edit",
+    "preview": "Preview"
+  },
+  "new-post": {
+    "title": "Write a new post",
+    "form": {
+      "add-image": {
+        "cover": "Add a cover image",
+        "message-url": "Type a valid image url"
+      },
+      "title": "New post title here...",
+      "tags": "Add up to 4 tags...",
+      "content": "Write your post content here...",
+      "save-draft": "Save draft"
+    }
+  }
 }

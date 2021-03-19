@@ -1,0 +1,52 @@
+{
+  "header": {
+    "search-engine": "Buscar...",
+    "button-write-post": "Escribir publicación"
+  },
+  "sidebar": {
+    "my-tags": "My tags"
+  },
+  "posts": {
+    "filter": {
+      "feed": "contenido",
+      "week": "semana",
+      "month": "mes",
+      "year": "año",
+      "infinity": "todos",
+      "latest": "últimos"
+    },
+    "title": "Publicaciones"
+  },
+  "publicity": {
+    "home": {
+      "stories": {
+        "title": "Historias",
+        "share-story": "Compartir tu historia",
+        "see-posts": "Ver publicaciones"
+      }
+    }
+  },
+  "actions": {
+    "change": "Cambiar",
+    "remove": "Remover",
+    "cancel": "Cancelar",
+    "add": "Añadir",
+    "publish": "Publicar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "preview": "Vista previa"
+  },
+  "new-post": {
+    "title": "Escribir nuevo post",
+    "form": {
+      "add-image": {
+        "cover": "Añadir imagen",
+        "message-url": "Ingresar una url de una imagen válida"
+      },
+      "title": "Nuevo título del post aquí...",
+      "tags": "Añadir mas de 4 etiquetas...",
+      "content": "Escribir tu contenido aquí...",
+      "save-draft": "Guardar borrador"
+    }
+  }
+}
